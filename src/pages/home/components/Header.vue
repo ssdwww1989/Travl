@@ -17,7 +17,7 @@
 <script>
 
 export default {
-    name: 'HomeHeader'
+  name: 'HomeHeader'
 }
 </script>
 
@@ -53,5 +53,3 @@ export default {
           margin-left -.04rem
           font-size .24rem
 </style>
-
-
