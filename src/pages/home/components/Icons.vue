@@ -1,12 +1,12 @@
 <template>
     <div class="icons">
       <swiper :options=swiperOption>
-        <swiper-slide v-for="(page, index) of pages" :key="index">
+        <swiper-slide v-for="(page, index) of pages" :key="index" v-if="iconsList">
             <div class="icon" v-for="item in page" :key="item.id">
                 <div class="icon-img">
                 <img class="icon-img-content" :src="item.imgUrl" alt="">
                 </div>
-                <p class="icon-desc">{{item.title}}</p>
+                <p class="icon-desc">{{item.desc}}</p>
             </div>
         </swiper-slide>
       </swiper>
@@ -16,54 +16,18 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    icons: Array
+  },
   data () {
     return {
-      iconList: [ {
-        id: '001',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-        title: '景点门票'
-      }, {
-        id: '002',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-        title: '必游榜单'
-      }, {
-        id: '003',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/6a/45f595250c73d102.png',
-        title: '夏日玩水'
-      }, {
-        id: '004',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-        title: '一日游'
-      }, {
-        id: '005',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-        title: '动植物园'
-      }, {
-        id: '006',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-        title: '故宫'
-      }, {
-        id: '007',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png',
-        title: '主题乐园'
-      }, {
-        id: '008',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ed/cf572be30fc32f02.png',
-        title: 'Q+精选'
-      }, {
-        id: '009',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ed/cf572be30fc32f02.png',
-        title: 'Q+精选'
-      } ],
-      swiperOption: {
-        autoplay: false
-      }
+      swiperOption: {}
     }
   },
   computed: {
     pages () {
       const pages = []
-      this.iconList.forEach((item, index) => {
+      this.icons.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
@@ -71,6 +35,9 @@ export default {
         pages[page].push(item)
       })
       return pages
+    },
+    iconsList () {
+      return this.pages.length
     }
   }
 }

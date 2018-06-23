@@ -2,7 +2,7 @@
 <div>
     <div class="title">热销推荐</div>
     <ul>
-        <li class="item  border-bottom" v-for="item of recommendList" :key="item.id">
+        <li class="item  border-bottom" v-for="item of recommend" :key="item.id" v-if="recommendList">
             <img class="item-img" :src="item.imgUrl" alt="">
           <div class="item-info">
             <p class="item-title">{{item.title}}</p>
@@ -17,40 +17,12 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [
-        {
-          id: '001',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-          title: '金海湖风景区',
-          desc: '40个国家的109处著名古迹名胜微缩景点'
-        },
-        {
-          id: '002',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-          title: '金海湖风景区',
-          desc: '40个国家的109处著名古迹名胜微缩景点'
-        },
-        {
-          id: '003',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-          title: '金海湖风景区',
-          desc: '40个国家的109处著名古迹名胜微缩景点'
-        },
-        {
-          id: '004',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-          title: '金海湖风景区',
-          desc: '40个国家的109处著名古迹名胜微缩景点'
-        },
-        {
-          id: '005',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg_200x200_36727f69.jpg',
-          title: '金海湖风景区',
-          desc: '40个国家的109处著名古迹名胜微缩景点'
-        }
-      ]
+  props: {
+    recommend: Array
+  },
+  computed: {
+    recommendList () {
+      return this.recommend.length
     }
   }
 }
