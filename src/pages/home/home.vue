@@ -14,7 +14,7 @@ export default {
   components: {
     HomeHeader,
     HomeSwiper,
-    HomeIcons
+    HomeIcons,
   },
   name: 'Home'
 }

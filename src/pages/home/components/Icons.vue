@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-      <swiper>
+      <swiper :options=swiperOption>
         <swiper-slide v-for="(page, index) of pages" :key="index">
             <div class="icon" v-for="item in page" :key="item.id">
                 <div class="icon-img">
@@ -54,7 +54,10 @@ export default {
            id:'009',
            imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/ed/cf572be30fc32f02.png',
            title:'Q+精选'
-        }]
+        }],
+         swiperOption:{
+           autoplay:false
+         }
       }
   },
   computed:{
