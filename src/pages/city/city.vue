@@ -43,7 +43,6 @@ export default {
     },
     handleLetterChange (letter) {
       this.letter = letter
-      console.log(this.letter)
     }
   },
   mounted () {
