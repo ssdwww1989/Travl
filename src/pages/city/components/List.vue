@@ -21,7 +21,7 @@
             </div>
         </div>
         </div>
-        <div class="area" v-for="(item, key) in cities" :key="key">
+        <div class="area" v-for="(item, key) in cities" :key="key" :ref="key">
             <div class="title border-topbottom">{{key}}</div>
             <div class="item-list">
                 <div class="item border-bottom" v-for="item of item" :key="item.id">{{item.name}}</div>
@@ -37,10 +37,19 @@ export default {
   name: 'CityList',
   props: {
     hotCities: Array,
-    cities: Object
+    cities: Object,
+    letter: String
   },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0] // 获取到letter值对应的area区域
+        this.scroll.scrollToElement(element)
+      }
+    }
   }
 }
 </script>
@@ -59,7 +68,7 @@ export default {
     overflow hidden
     position absolute
     left 0
-    top 1.7rem
+    top 1.77rem
     right 0
     bottom 0
   .title
