@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+     <keep-alive> <!-- keep-alive 请求放在内存中不需要重复请求 -->
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
