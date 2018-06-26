@@ -28,7 +28,7 @@ export default {
     font-size .32rem
     padding 0 .2rem
   }
-  .item-title-icon 
+  .item-title-icon
     position relative
     left .2rem
     top .06rem
