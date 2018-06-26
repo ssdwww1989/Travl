@@ -12,12 +12,15 @@
         </div>
       </div>
     </div>
-    <common-gallary :imgs='gallaryImgs' v-show="showGallary" @close = "handleGallaryClose"></common-gallary>
+    <OpacityAnimation>
+      <common-gallary :imgs='gallaryImgs' v-show="showGallary" @close = "handleGallaryClose"></common-gallary>
+    </OpacityAnimation>
   </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/Gallary'
+import OpacityAnimation from 'common/fade/OpacityAnimation'
 export default {
   name: 'DetailBanner',
   props: {
@@ -26,7 +29,8 @@ export default {
     gallaryImgs: Array
   },
   components: {
-    CommonGallary
+    CommonGallary,
+    OpacityAnimation
   },
   data () {
     return {
